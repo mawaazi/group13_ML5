@@ -3,6 +3,9 @@ Member: Nakyobe Geogin Martha
 ## Completed
 - Researched and understood what Gradient descent is. 
 It is an iterative optimization algorithm used to minimise a cost function by adjusting model parameters in the direction of the steepest descent of the function's gradient. Simply put, it finds the optimal values of weights and biases by gradually reducing the error between predicted and actual outputs.
+  References: GeeksforGeeks Machine Learning
+            : IBM Topics on Gradient Descent
+
 - Wrote a draft of sample code on paper to lock in the concept.
 - Created a header file for "gradient_descent.hpp".
 
