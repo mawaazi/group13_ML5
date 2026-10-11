@@ -23,5 +23,5 @@ traintestsplitresult <T> traintestsplit(
     double testratio = 0.2,
     unsigned int randomseed = 42
 );
-}
+} //
 #endif
