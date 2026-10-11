@@ -8,6 +8,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(include)
 
+add_executable(ml_project
+    src/main.cpp
+    src/ml_pipeline.cpp
+)
+
 add_library(closed_form src/closed_form.cpp)
 
 add_executable(closed_form_example
@@ -22,4 +27,3 @@ target_link_libraries(test_closed_form PRIVATE closed_form)
 
 enable_testing()
 add_test(NAME ClosedFormTests COMMAND test_closed_form)
-
