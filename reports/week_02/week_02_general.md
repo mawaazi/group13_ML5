@@ -1,6 +1,8 @@
-WEEK TWO ACHIEVEMENTS
+# Week 02 general progres report
 
-Successful project work division and concept understanding. The team was previously tasked with understanding at least one on each of the core concepts that make up the Group machine learning project, the work divided as follows;
+
+## Completed
+- Successful project work division and concept understanding. The team was previously tasked with understanding at least one on each of the core concepts that make up the Group machine learning project, the work divided as follows;
 1. Finding line of best fit
 2. Closed form equation
 3. Gradient descent
@@ -14,5 +16,27 @@ Successful project work division and concept understanding. The team was previou
 11. Train/test splits
 12. Multiple linear regression
 
-The team has began the task of creating individual header files as discussed and individual function files outside the main.cpp within the src folder of our repository. 
-completed work will be reviewed pending creation of a singular mlpipeline.cpp function file.
+- Familiarisation of members with github collaboration
+- Mastery of the group assignment workflow
+
+## In Progress 
+- The team has began the task of creating individual header files as discussed and individual function files outside the main.cpp within the src folder of our repository. 
+- Review of completed work pending creation of a singular mlpipeline.cpp function file.
+
+## Challenges
+- Poor network in some members' reidences
+- Steep learning curve with certain C++23 features
+
+## Next week
+- Implementation of header files
+- Examples for all impllemented header files
+
+## AI use
+### Tool(s)
+- Gemini
+- Claude
+- ChatGPT
+
+### Purpose
+- Learning and understanding the structure of header files in C++23
+
