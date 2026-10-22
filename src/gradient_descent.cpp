@@ -5,50 +5,51 @@
 using namespace std;
 namespace LinearRegression{
     vector<double> computeGradientDescent(
-        const vector<vector<double>>&x, 
+        const vector<vector<double>>&X, 
         const vector<double>&y,
     vector <double> weights,
-    double learningrate,
-    int iterations)
+    double learningrate, int iterations)
+
     {
-        int m= x.size(); //Number of data samples
+        const size_t m = X.size();
         if (m==0){
             return weights;
         }
-        int n= weights.size(); //Number of weights
-
-        for (int it= 0; it < iterations; ++it) {
-            std::vector<double> predictions(m, 0.0);
-            std::vector<double> gradients(n, 0.0);
-
-            // Calculate predictions: y_pred = x * weights
-            for (int i = 0; i < m; ++i) {
-                double prediction = 0.0;
-                for (int j = 0; j < n; ++j) {
-                    prediction += x[i][j] * weights[j];
-                }
-                predictions[i] = prediction;
-            }
-
-            // Compute gradients based on the error (prediction - actual y)
-            for (int j = 0; j < n; ++j) {
-                double gradientSum = 0.0;
-                for (int i = 0; i < m; ++i) {
-                    double error = predictions[i] - y[i];
-                    
-                    double featureVal = (j == 0) ? 1.0 : x[i][j - 1]; 
-                    gradientSum += error * featureVal;
-                }
-                gradients[j] = (2.0 / m) * gradientSum;
-            }
-
-            // Update weights: weights = weights - (learningRate * gradients)
-            for (int j = 0; j < n; ++j) {
-                weights[j] -= learningrate * gradients[j];
-            }
+        const size_t n = weights.size();
+        if (y.size() !=m){
+            throw std:: invalid_argument("X and y must contain the same number of samples.");
         }
+        if (n==0) return weights;
+        //weights[0] is the bias, weights[1],[2],.. are feature weights
 
-        return weights;
-        
+        for (size_t i=0; i<m; i++) {
+            if (X[i].size()+1 != n){
+                throw std:: invalid_argument("The number of weights must equal the number of features plus 1 bias.");
+            }
+            }
+
+            for (int it; it<iterations; ++it){
+                vector<double> gradients (n,0.0);
+
+                for(size_t i=0; i<m; ++i){
+                    double prediction = weights[0]; //bias
+                    for(size_t j=0; j<X[i].size(); ++j){
+                        prediction += X[i][j] * weights[j+1];
+                    }
+                    const double error = prediction - y[i];
+                    gradients[0] += error; //gradient for bias
+
+                    for(size_t j=0; j<X[i].size(); ++j){
+                        gradients[j+1] += error * X[i][j];
+                    }
+                }
+
+                for(size_t j=0; j<n; ++j){
+                    gradients[j] *= (2.0/ static_cast<double>(m));
+                    weights[j]-= learningrate * gradients[j];
+                }
+            }
+
+            return weights;
+        }
     }
-}
