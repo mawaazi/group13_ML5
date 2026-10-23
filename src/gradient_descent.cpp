@@ -5,25 +5,25 @@
 using namespace std;
 namespace LinearRegression{
     vector<double> computeGradientDescent(
-        const vector<vector<double>>&X, 
+        const vector<vector<double>>&x, 
         const vector<double>&y,
     vector <double> weights,
     double learningrate, int iterations)
 
     {
-        const size_t m = X.size();
+        const size_t m = x.size();
         if (m==0){
             return weights;
         }
         const size_t n = weights.size();
         if (y.size() !=m){
-            throw std:: invalid_argument("X and y must contain the same number of samples.");
+            throw std:: invalid_argument("x and y must contain the same number of samples.");
         }
         if (n==0) return weights;
         //weights[0] is the bias, weights[1],[2],.. are feature weights
 
         for (size_t i=0; i<m; i++) {
-            if (X[i].size()+1 != n){
+            if (x[i].size()+1 != n){
                 throw std:: invalid_argument("The number of weights must equal the number of features plus 1 bias.");
             }
             }
@@ -33,14 +33,14 @@ namespace LinearRegression{
 
                 for(size_t i=0; i<m; ++i){
                     double prediction = weights[0]; //bias
-                    for(size_t j=0; j<X[i].size(); ++j){
-                        prediction += X[i][j] * weights[j+1];
+                    for(size_t j=0; j<x[i].size(); ++j){
+                        prediction += x[i][j] * weights[j+1];
                     }
                     const double error = prediction - y[i];
                     gradients[0] += error; //gradient for bias
 
-                    for(size_t j=0; j<X[i].size(); ++j){
-                        gradients[j+1] += error * X[i][j];
+                    for(size_t j=0; j<x[i].size(); ++j){
+                        gradients[j+1] += error * x[i][j];
                     }
                 }
 

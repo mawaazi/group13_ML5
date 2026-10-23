@@ -10,18 +10,18 @@ int main(){
     Example: learn the relationship y=2x
 
     Training data:
-    X=1, y=2
-    X=2, y=4
-    X=3, y=6
+    x=1, y=2
+    x=2, y=4
+    x=3, y=6
 
     The model is:
-    y_predicted = bias + (weight*X)
+    y_predicted = bias + (weight*x)
 
     Parameters to learn:
     weights[0] = bias
-    weights[1] = weight for X
+    weights[1] = weight for x
     */
-   vector<vector<double>> X = {
+   vector<vector<double>> x = {
     {1.0}, {2.0}, {3.0}
    };
 
@@ -38,7 +38,7 @@ int main(){
 
    //The function is declared in gradient_descent.hpp and implemented in gradient_descent.cpp
    vector<double> finalWeights = LinearRegression:: computeGradientDescent(
-    X, y, weights, learningRate, iterations
+    x, y, weights, learningRate, iterations
    );
 
    cout<< "After"<<iterations<< "iterations: \n";
@@ -46,9 +46,9 @@ int main(){
    cout<< "Learned weight= "<< finalWeights[1]<< '\n';
 
    cout<< "Predictions using the learned model:\n";
-   for(size_t i=0; i<X.size(); ++i){
-    double predictedy = finalWeights[0]+ finalWeights[1] *X[i][0];
-    cout<< "X= "<< X[i][0]<<", actual y= "<< y[i]
+   for(size_t i=0; i<x.size(); ++i){
+    double predictedy = finalWeights[0]+ finalWeights[1] *x[i][0];
+    cout<< "X= "<< x[i][0]<<", actual y= "<< y[i]
     <<", predicted y= "<<predictedy<<'\n';
    }
 
