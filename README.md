@@ -2,7 +2,7 @@
 This is Group 9's project repository. We will be taking on Machine Learning 1 (Linear regression from scratch).
 
 
-## Closed-Form Equations Module
+## (A) Closed-Form Equations Module
 
 ### Overview
 
@@ -78,3 +78,7 @@ The sequence is 2, 6, 18, 54.
 ### Input Validation
 
 The functions reject negative values of n by throwing an `invalid_argument` exception.
+
+
+
+
