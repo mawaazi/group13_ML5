@@ -58,7 +58,7 @@ static vector<double> solve_system(
 }
 
 
-// Calculate the coefficients for multiple linear regression
+// Calculate the coefficients for simple and multiple linear regression
 vector<double> fit(
     const vector<vector<double>>& X,
     const vector<double>& y
