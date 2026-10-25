@@ -2,14 +2,15 @@
 #define GRADIENT_DESCENT_HPP
 
 #include <vector>
+using namespace std;
 
 namespace LinearRegression {
     // Function declaration for standard gradient descent
-    std::vector<double> computeGradientDescent(
-        const std::vector<std::vector<double>>& X, 
-        const std::vector<double>& y, 
-        std::vector<double> weights, 
-        double learningRate, 
+    vector<double> computeGradientDescent(
+        const vector<std::vector<double>>& X, 
+        const vector<double>& y, 
+        vector<double> weights, 
+        double learningrate, 
         int iterations
     );
 }
