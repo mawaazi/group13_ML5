@@ -64,7 +64,6 @@ namespace LinearRegression{
             vector<double> gradients(n, 0.0);
 
             // Calculate predictions.
-            //
             // y_pred = beta_0 + beta_1*x1 + beta_2*x2 + ...
             for (size_t i = 0; i < m; ++i) {
 
@@ -77,7 +76,7 @@ namespace LinearRegression{
                 predictions[i] = prediction;
             }
 
-            // Calculate gradients.
+            // Calculate gradients
             for (size_t j = 0; j < n; ++j) {
 
                 double gradientSum = 0.0;
@@ -103,7 +102,7 @@ namespace LinearRegression{
                 gradients[j] = (2.0 / m) * gradientSum;
             }
 
-            // Update weights.
+            // Update weights
             for (size_t j = 0; j < n; ++j) {
                 weights[j] -= learningRate * gradients[j];
             }
