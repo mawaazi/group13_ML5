@@ -48,7 +48,7 @@ int main(){
    cout<< "Predictions using the learned model:\n";
    for(size_t i=0; i<x.size(); ++i){
     double predictedy = finalWeights[0]+ finalWeights[1] *x[i][0];
-    cout<< "X= "<< x[i][0]<<", actual y= "<< y[i]
+    cout<< "x= "<< x[i][0]<<", actual y= "<< y[i]
     <<", predicted y= "<<predictedy<<'\n';
    }
 
