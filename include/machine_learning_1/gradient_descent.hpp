@@ -10,7 +10,7 @@ namespace LinearRegression {
         const vector<std::vector<double>>& x, 
         const vector<double>& y, 
         vector<double> weights, 
-        double learningrate, 
+        double learningRate, 
         int iterations
     );
 }
