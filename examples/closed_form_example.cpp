@@ -1,17 +1,40 @@
+
 #include "closed_form.hpp"
 #include <iostream>
+#include <vector>
 
 using namespace std;
-int main(){
-    cout << "Closed-form  Equations Example\n\n";
-    
-    //sum of the first 10 natural numbers
-    cout << "sum of natural numbers" << closed_form::sum_natural_numbers(10) << '\n';
 
-    //Arithmetic series: 5, 8, 11,14,17
-    cout <<"Arithmetic series sum: " << closed_form::arithmetic_series_sum(5, 5, 3) << '\n';
+int main() {
+    // Training data: hours studied and hours slept
+    vector<vector<double>> X = {
+        {1, 6},
+        {2, 8},
+        {3, 7},
+        {4, 9}
+    };
 
-    //Geometric series: 2, 6, 18, 54
-    cout <<"Geometric series sum: " << closed_form::geometric_series_sum(4, 2, 3) << '\n';
-    
+    // Actual exam scores
+    vector<double> y = {40, 50, 60, 70};
+
+    // Calculate the regression coefficients
+    vector<double> coefficients = fit(X, y);
+
+    cout << "Regression coefficients:" << endl;
+
+    for (size_t i = 0; i < coefficients.size(); i++) {
+        cout << "b" << i << " = "
+             << coefficients[i] << endl;
+    }
+
+    // Predict the score for a student who studied 5 hours
+    // and slept for 8 hours
+    vector<double> new_student = {5, 8};
+
+    double predicted_score = predict(coefficients, new_student);
+
+    cout << "Predicted exam score: "
+         << predicted_score << endl;
+
+    return 0;
 }
