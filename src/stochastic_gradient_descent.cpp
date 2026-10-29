@@ -1,5 +1,7 @@
 #include "../include/machine_learning_1/stochastic_gradient_descent.hpp"
 #include<stdexcept>
+#include<algorithm>
+#include<random>
 
 namespace LinearRegression{
 
@@ -7,7 +9,7 @@ namespace LinearRegression{
     GradientDescentOptimizer::GradientDescentOptimizer(double lR, int iter)
     : learningRate(lR), iterations(iter){
         if (lR <=0 || iter <0) {
-            throw std::invalid_argument("Ivalid learning rate or iteration count");
+            throw std::invalid_argument("Invalid learning rate or iteration count");
         }
     }
 
@@ -52,8 +54,16 @@ namespace LinearRegression{
         double lR = getLearningRate();
         int iter = getIterations();
 
+        std::vector<std::size_t> indices(x.size());
+
+        for  (std::size_t i=0; i< indices.size(); ++i){
+            indices [i] = i;
+        }
+        std::mt19937 generator(std:: random_device{}());
+
         for (int epoch =0; epoch <iter; ++epoch){
-            for (std::size_t i=0; i< x.size(); ++i){
+            std::shuffle(indices.begin(), indices.end(), generator);
+            for (std::size_t i : indices){
                 double prediction = weights[0];
 
                 for (std::size_t j=0; j< featureCount; ++j){
