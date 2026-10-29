@@ -1,13 +1,19 @@
+
 #ifndef CLOSED_FORM_HPP
 #define CLOSED_FORM_HPP
 
-namespace closed_form {
+#include <vector>
 
-    double sum_natural_numbers(int n);
+using namespace std;
 
-    double arithmetic_series_sum(int n, double a, double d);
+vector<double> fit(
+    const vector<vector<double>>& X,
+    const vector<double>& y
+);
 
-    double geometric_series_sum(int n, double a, double r);
-}
+double predict(
+    const vector<double>& coefficients,
+    const vector<double>& features
+);
 
-#endif // CLOSED_FORM_HPP
+#endif

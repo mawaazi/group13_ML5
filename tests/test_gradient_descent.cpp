@@ -6,7 +6,7 @@ using namespace std;
 int main() {
     // Create a tiny dummy dataset: y = 2 * x1
     // x has 3 rows, 1 feature column
-    vector<vector<double>> X = {
+    vector<vector<double>> x = {
         {1.0},
         {2.0},
         {3.0}
@@ -26,7 +26,7 @@ int main() {
 
     // Run the function
     vector<double> final_weights = LinearRegression::computeGradientDescent(
-        X, y, initial_weights, learningRate, iterations
+        x, y, initial_weights, learningRate, iterations
     );
 
     // Print the results

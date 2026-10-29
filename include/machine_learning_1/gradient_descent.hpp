@@ -7,10 +7,10 @@ using namespace std;
 namespace LinearRegression {
     // Function declaration for standard gradient descent
     vector<double> computeGradientDescent(
-        const vector<std::vector<double>>& X, 
+        const vector<std::vector<double>>& x, 
         const vector<double>& y, 
         vector<double> weights, 
-        double learningrate, 
+        double learningRate, 
         int iterations
     );
 }
