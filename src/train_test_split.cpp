@@ -1,4 +1,4 @@
-#include "ml_library/train_test_split.hpp"
+#include "include/machine_learning_1/train_test_split.hpp"
 #include <random>
 #include <algorithm>
 #include <numeric>
@@ -29,23 +29,23 @@ namespace ml_library {
         result.test_data.reserve(test_size);
 
         for (size_t i = 0; i < total_size; ++i){
-            result.train_data.pushback(data[indices[i]]);
+            result.train_data.push_back(data[indices[i]]);
         }
         
-        for(size_t i = 0; i < size_t; ++i){
-            result.test_data.puhback(data[indices[i]]);
+        for(size_t i = 0; i < test_size; ++i){
+            result.test_data.push_back(data[indices[i]]);
         }
       return result;
     }
     
-    std::pair<SplitResult, SplitResult> TrainTetSplitter::splitPaired(
+    std::pair<SplitResult, SplitResult> TrainTestSplitter::splitPaired(
             const std::vector<double>& X,
             const std::vector<double>& Y,
             double test_ratio,
             unsigned int seed
     ){
         // ensure features and label match iin length()
-        if (X.size() != y.size()){throw std::invalid_argument("Feature vector X and target vector y must ahve the same size.")}
+        if (X.size() != Y.size()){throw std::invalid_argument("Feature vector X and target vector y must ahve the same size.")}
     }
     validateInputs(X.size(), test_ratio);
 
