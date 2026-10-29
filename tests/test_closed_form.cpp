@@ -1,27 +1,55 @@
-#include "closed_form.hpp"
 
-#include <cassert>
-#include <cmath>
+#include "closed_form.hpp"
 #include <iostream>
+#include <cmath>
+#include <stdexcept>
 
 using namespace std;
 
-int main(){
-    // Test 1: Sum of the first 10 natural numbers
-    assert(closed_form::sum_natural_numbers(10) == 55);
+int main() {
+    // Training data
+    vector<vector<double>> X = {
+        {1, 6},
+        {2, 8},
+        {3, 7},
+        {4, 9}
+    };
 
-    // Test 2: Arithmetic series sum: 5, 8, 11, 14, 17
-    assert(closed_form::arithmetic_series_sum(5, 5, 3) == 55);
+    vector<double> y = {40, 50, 60, 70};
 
-    // Test 3: Geometric series sum: 2, 6, 18, 54
-    assert(closed_form::geometric_series_sum(4, 2, 3) == 80);
+    // Test 1: Calculate the coefficients
+    vector<double> coefficients = fit(X, y);
 
-    // Test 4: Geometric series sum when r = 1
-    assert(closed_form::geometric_series_sum(4, 5, 1) == 20);
+    if (coefficients.size() != 3) {
+        cout << "Test 1 failed: Wrong number of coefficients." << endl;
+        return 1;
+    }
 
-    // Test 5:  Check a decimal result
-    assert(abs(closed_form::arithmetic_series_sum(3, 1.5, 0.5) - 6.0) < 1e-9);
+    cout << "Test 1 passed: Coefficients calculated." << endl;
 
-    cout << " All closed-form equation tests passed!\n";
+    // Test 2: Check the predicted score
+    vector<double> new_student = {5, 8};
+    double prediction = predict(coefficients, new_student);
+
+    if (abs(prediction - 80.0) > 1e-6) {
+        cout << "Test 2 failed: Prediction is incorrect." << endl;
+        return 1;
+    }
+
+    cout << "Test 2 passed: Prediction is correct." << endl;
+
+    // Test 3: Check invalid feature count
+    try {
+        vector<double> wrong_features = {5};
+        predict(coefficients, wrong_features);
+
+        cout << "Test 3 failed: Invalid features were accepted." << endl;
+        return 1;
+    } catch (const invalid_argument&) {
+        cout << "Test 3 passed: Invalid features rejected." << endl;
+    }
+
+    cout << "All tests passed!" << endl;
+
     return 0;
 }
