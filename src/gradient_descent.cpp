@@ -63,9 +63,8 @@ namespace LinearRegression{
             vector<double> predictions(m, 0.0);
             vector<double> gradients(n, 0.0);
 
-        
             // Calculate predictions
-
+            //
             // y_pred = beta_0 + beta_1*x1 + beta_2*x2 + ...
             for (size_t i = 0; i < m; ++i) {
 
