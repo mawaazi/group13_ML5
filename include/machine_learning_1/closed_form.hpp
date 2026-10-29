@@ -1,3 +1,4 @@
+
 #ifndef CLOSED_FORM_HPP
 #define CLOSED_FORM_HPP
 
