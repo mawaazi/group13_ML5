@@ -4,23 +4,25 @@
 using namespace std;
 
 int main() {
-    // Create a tiny dummy dataset: y = 2 * x1
-    // x has 3 rows, 1 feature column
+    // Dataset: y = 2+ 3x1 + 4x2
+    
     vector<vector<double>> x = {
-        {1.0},
-        {2.0},
-        {3.0}
+        {1.0, 1.0},
+        {2.0, 1.0},
+        {1.0, 2.0},
+        {2.0, 2.0},
+        {3.0, 1.0}
     };
     
     // Target values y
-    vector<double> y = {2.0, 4.0, 6.0};
+    vector<double> y = {9.0, 12.0, 13.0, 16.0, 15.0};
 
-    // Initial starting weights [bias, weight_for_x1]
-    vector<double> initial_weights = {0.0, 0.0};
+    // Initial starting weights [bias, x1 weight, x2 weight]
+    vector<double> initial_weights = {0.0, 0.0, 0.0};
 
     // Hyperparameters
     double learningRate = 0.01;
-    int iterations = 1000;
+    int iterations = 5000;
 
     cout << "Running Gradient Descent test..." << std::endl;
 
